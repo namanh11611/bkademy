@@ -4,16 +4,11 @@ namespace Bkademy\Webpos\Model\ResourceModel;
 
 use Magento\Framework\Model\AbstractModel;
 
-/**
- * Created by PhpStorm.
- * User: NamAnh
- * Date: 01-Feb-17
- * Time: 10:56 PM
- */
 class Staff extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
 {
     /**
-     * Resource initialization
+     * Initialize resource model
+     * Get table name from config
      *
      * @return void
      */
@@ -21,4 +16,5 @@ class Staff extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
     {
         $this->_init('webpos_staff', 'staff_id');
     }
+
 }

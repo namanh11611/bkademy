@@ -1,24 +1,14 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: NamAnh
- * Date: 03-Feb-17
- * Time: 12:39 AM
- */
-
 namespace Bkademy\Webpos\Controller\Adminhtml\Staff;
 
-use Magento\Framework\App\ResponseInterface;
 use Magento\Framework\Controller\ResultFactory;
-
+/**
+ * Action NewAction
+ */
 class NewAction extends \Bkademy\Webpos\Controller\Adminhtml\Staff
 {
-
     /**
-     * Dispatch request
-     *
-     * @return \Magento\Framework\Controller\ResultInterface|ResponseInterface
-     * @throws \Magento\Framework\Exception\NotFoundException
+     * @return \Magento\Framework\View\Result\Page
      */
     public function execute()
     {
@@ -26,3 +16,4 @@ class NewAction extends \Bkademy\Webpos\Controller\Adminhtml\Staff
         return $resultForward->forward('edit');
     }
 }
+

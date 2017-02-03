@@ -51,25 +51,25 @@ define(
                     }
                 }
             },
-            /**
-             * Show/hide container
-             */
-            toggleArea: function (containerId) {
-                var self = this;
-                containerId = self.getContainerId(containerId);
-                $.each($(AppConfig.ELEMENT_SELECTOR.ACTIVE_CONTAINER),function(){
-                    if($(this).attr('id') != containerId){
-                        $(this).removeClass(AppConfig.CLASS.ACTIVE);
-                    }
-                });
-                if ($('#' + containerId).length > 0) {
-                    $('#' + containerId).toggleClass(AppConfig.CLASS.ACTIVE);
-                    if(containerId != AppConfig.MAIN_CONTAINER){
-                        $('#'+containerId).addClass(AppConfig.CLASS.POS_CONTAINER);
-                    }
-                }
-                self.showMainContainer();
-            },
+/**
+ * Show/hide container
+ */
+toggleArea: function (containerId) {
+    var self = this;
+    containerId = self.getContainerId(containerId);
+    $.each($(AppConfig.ELEMENT_SELECTOR.ACTIVE_CONTAINER),function(){
+        if($(this).attr('id') != containerId){
+            $(this).removeClass(AppConfig.CLASS.ACTIVE);
+        }
+    });
+    if ($('#' + containerId).length > 0) {
+        $('#' + containerId).toggleClass(AppConfig.CLASS.ACTIVE);
+        if(containerId != AppConfig.MAIN_CONTAINER){
+            $('#'+containerId).addClass(AppConfig.CLASS.POS_CONTAINER);
+        }
+    }
+    self.showMainContainer();
+},
             /**
              * Show main container
              */

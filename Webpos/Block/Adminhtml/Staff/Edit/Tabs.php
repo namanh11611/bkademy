@@ -1,15 +1,18 @@
 <?php
+/**
+ *  Copyright © 2016 Magestore. All rights reserved.
+ *  See COPYING.txt for license details.
+ *
+ */
 
 namespace Bkademy\Webpos\Block\Adminhtml\Staff\Edit;
-
 /**
- * Created by PhpStorm.
- * User: NamAnh
- * Date: 03-Feb-17
- * Time: 12:52 AM
+ * Class Tabs
+ * @package Bkademy\Webpos\Block\Adminhtml\Staff\Staff\Edit
  */
 class Tabs extends \Magento\Backend\Block\Widget\Tabs
 {
+
     /**
      *
      */
@@ -38,6 +41,8 @@ class Tabs extends \Magento\Backend\Block\Widget\Tabs
                 'active' => true
             ]
         );
+
         return parent::_beforeToHtml();
     }
+
 }

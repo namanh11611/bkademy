@@ -1,24 +1,11 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: NamAnh
- * Date: 03-Feb-17
- * Time: 1:12 AM
- */
-
 namespace Bkademy\Webpos\Controller\Adminhtml\Staff;
-
-
-use Magento\Framework\App\ResponseInterface;
 
 class Save extends \Bkademy\Webpos\Controller\Adminhtml\Staff
 {
 
     /**
-     * Dispatch request
-     *
-     * @return \Magento\Framework\Controller\ResultInterface|ResponseInterface
-     * @throws \Magento\Framework\Exception\NotFoundException
+     * @return $this
      */
     public function execute()
     {

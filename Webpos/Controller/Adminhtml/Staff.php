@@ -1,12 +1,11 @@
 <?php
-
 namespace Bkademy\Webpos\Controller\Adminhtml;
-
 /**
- * Created by PhpStorm.
- * User: NamAnh
- * Date: 02-Feb-17
- * Time: 2:40 AM
+ * class \Bkademy\Webpos\Controller\Adminhtml\Staff\Staff
+ *
+ * Abstract location action class
+ * Methods:
+ *  _isAllowed
  */
 abstract class Staff extends \Magento\Backend\App\Action
 {
@@ -14,19 +13,15 @@ abstract class Staff extends \Magento\Backend\App\Action
      * @var \Magento\Backend\Model\View\Result\ForwardFactory
      */
     protected $_resultForwardFactory;
-
     /**
      * @var \Magento\Framework\View\Result\LayoutFactory
      */
     protected $_resultLayoutFactory;
-
     /**
      * @var \Magento\Framework\View\Result\PageFactory
      */
     protected $_resultPageFactory;
-
     /**
-     * Staff constructor.
      * @param \Magento\Backend\App\Action\Context $context
      * @param \Magento\Framework\View\Result\PageFactory $resultPageFactory
      * @param \Magento\Framework\View\Result\LayoutFactory $resultLayoutFactory
@@ -45,9 +40,11 @@ abstract class Staff extends \Magento\Backend\App\Action
     }
 
     /**
-     * @return \Magento\Framework\View\Result\Page
+     * Init layout, menu and breadcrumb
+     *
+     * @return \Magento\Backend\Model\View\Result\Page
      */
-    public function _initAction()
+    protected function _initAction()
     {
         $resultPage = $this->_resultPageFactory->create();
         $resultPage->setActiveMenu('Bkademy_Webpos::staff');

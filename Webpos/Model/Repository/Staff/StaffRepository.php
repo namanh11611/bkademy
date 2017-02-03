@@ -1,21 +1,33 @@
 <?php
-
 /**
- * Created by PhpStorm.
- * User: NamAnh
- * Date: 03-Feb-17
- * Time: 5:22 AM
+ *  Copyright © 2016 Magestore. All rights reserved.
+ *  See COPYING.txt for license details.
+ *
  */
 
 namespace Bkademy\Webpos\Model\Repository\Staff;
 
+/**
+ * Class StaffRepository
+ * @package Bkademy\Webpos\Model\Staff
+ */
 class StaffRepository implements \Bkademy\Webpos\Api\Staff\StaffRepositoryInterface
 {
+    /**
+     * @var \Bkademy\Webpos\Model\Session
+     */
     protected $session;
-
+    
+    /**
+     * @var \Magento\Framework\App\RequestInterface
+     */
     protected $request;
 
+    /**
+     * @var Permission
+     */
     protected $permissionHelper;
+
 
     /**
      * StaffManagement constructor.
@@ -35,9 +47,9 @@ class StaffRepository implements \Bkademy\Webpos\Api\Staff\StaffRepositoryInterf
     }
 
     /**
-     * @param $username
-     * @param $password
-     * @return mixed
+     * @param string $username
+     * @param string $password
+     * @return bool|string
      */
     public function login($username, $password)
     {
@@ -58,7 +70,8 @@ class StaffRepository implements \Bkademy\Webpos\Api\Staff\StaffRepositoryInterf
     }
 
     /**
-     * @return mixed
+     *
+     * @return boolean
      */
     public function logout()
     {

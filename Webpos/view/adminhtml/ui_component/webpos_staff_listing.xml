@@ -33,36 +33,76 @@
             </item>
         </argument>
     </dataSource>
-
     <container name="listing_top">
         <argument name="data" xsi:type="array">
             <item name="config" xsi:type="array">
                 <item name="template" xsi:type="string">ui/grid/toolbar</item>
             </item>
         </argument>
-
-        <bookmark name="bookmark">
+        <bookmark name="bookmarks">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="storageConfig" xsi:type="array">
-                        <item name="namspace" xsi:type="string">webpos_staff_listing</item>
+                        <item name="namespace" xsi:type="string">webpos_staff_listing</item>
                     </item>
                 </item>
             </argument>
         </bookmark>
-
-        <paging name="listing_paging">
+        <exportButton name="export_button">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
-                    <item name="storageConfig" xsi:type="array">
-                        <item name="provider" xsi:type="string">webpos_staff_listing.webpos_staff_listing.listing_top.bookmarks</item>
-                        <item name="namespace" xsi:type="string">current.paging</item>
-                    </item>
-                    <item name="selectProvider" xsi:type="string">webpos_staff_listing.webpos_staff_listing.webpos_staff_column.ids</item>
+                    <item name="selectProvider" xsi:type="string">webpos_staff_listing.webpos_staff_listing.webpos_staff_columns.ids</item>
                 </item>
             </argument>
-        </paging>
-
+        </exportButton>
+        <component name="columns_controls">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="columnsData" xsi:type="array">
+                        <item name="provider" xsi:type="string">webpos_staff_listing.webpos_staff_listing.webpos_staff_columns</item>
+                    </item>
+                    <item name="component" xsi:type="string">Magento_Ui/js/grid/controls/columns</item>
+                    <item name="displayArea" xsi:type="string">dataGridActions</item>
+                </item>
+            </argument>
+        </component>
+        <!--<filterSearch name="fulltext">-->
+            <!--<argument name="data" xsi:type="array">-->
+                <!--<item name="config" xsi:type="array">-->
+                    <!--<item name="provider" xsi:type="string">webpos_staff_listing.webpos_staff_listing_data_source</item>-->
+                    <!--<item name="chipsProvider" xsi:type="string">webpos_staff_listing.webpos_staff_listing.listing_top.listing_filters_chips</item>-->
+                    <!--<item name="storageConfig" xsi:type="array">-->
+                        <!--<item name="provider" xsi:type="string">webpos_staff_listing.webpos_staff_listing.listing_top.bookmarks</item>-->
+                        <!--<item name="namespace" xsi:type="string">current.search</item>-->
+                    <!--</item>-->
+                <!--</item>-->
+            <!--</argument>-->
+        <!--</filterSearch>-->
+        <filters name="listing_filters">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="columnsProvider" xsi:type="string">webpos_staff_listing.webpos_staff_listing.webpos_staff_listing</item>
+                    <item name="storageConfig" xsi:type="array">
+                        <item name="provider" xsi:type="string">webpos_staff_listing.webpos_staff_listing.listing_top.bookmarks</item>
+                        <item name="namespace" xsi:type="string">current.filters</item>
+                    </item>
+                    <item name="templates" xsi:type="array">
+                        <item name="filters" xsi:type="array">
+                            <item name="select" xsi:type="array">
+                                <item name="component" xsi:type="string">Magento_Ui/js/form/element/ui-select</item>
+                                <item name="template" xsi:type="string">ui/grid/filters/elements/ui-select</item>
+                            </item>
+                        </item>
+                    </item>
+                    <item name="childDefaults" xsi:type="array">
+                        <item name="provider" xsi:type="string">webpos_staff_listing.webpos_staff_listing.listing_top.listing_filters</item>
+                        <item name="imports" xsi:type="array">
+                            <item name="visible" xsi:type="string">webpos_staff_listing.webpos_staff_listing.webpos_staff_listing.${ $.index }:visible</item>
+                        </item>
+                    </item>
+                </item>
+            </argument>
+        </filters>
         <massaction name="listing_massaction">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
@@ -84,6 +124,22 @@
                     </item>
                 </argument>
             </action>
+            <!--<action name="change_status">-->
+                <!--<argument name="data" xsi:type="array">-->
+                    <!--<item name="config" xsi:type="array">-->
+                        <!--<item name="type" xsi:type="string">change_status</item>-->
+                        <!--<item name="label" xsi:type="string" translate="true">Change status</item>-->
+                    <!--</item>-->
+                <!--</argument>-->
+                <!--<argument name="actions" xsi:type="configurableObject">-->
+                    <!--<argument name="class" xsi:type="string">Webpos\Webpos\Ui\Component\MassAction\Status\Options</argument>-->
+                    <!--<argument name="data" xsi:type="array">-->
+                        <!--<item name="urlPath" xsi:type="string">webpos/staff/massStatus</item>-->
+                        <!--<item name="paramName" xsi:type="string">status</item>-->
+                    <!--</argument>-->
+                <!--</argument>-->
+            <!--</action>-->
+
             <action name="enable">
                 <argument name="data" xsi:type="array">
                     <item name="config" xsi:type="array">
@@ -102,36 +158,21 @@
                     </item>
                 </argument>
             </action>
+
+
         </massaction>
-
-        <exportButton name="export_button">
-            <argument name="data" xsi:type="array">
-                <item name="config" xsi:type="array">
-                    <item name="selectProvider" xsi:type="string">webpos_staff_listing.webpos_staff_listing.webpos_staff_columns.ids</item>
-                </item>
-            </argument>
-        </exportButton>
-
-        <component name="columns_controls">
-            <argument name="data" xsi:type="array">
-                <item name="config" xsi:type="array">
-                    <item name="columnsData" xsi:type="array">
-                        <item name="provider" xsi:type="string">webpos_staff_listing.webpos_staff_listing.webpos_staff_columns</item>
-                    </item>
-                    <item name="component" xsi:type="string">Magento_Ui/js/grid/controls/columns</item>
-                    <item name="displayArea" xsi:type="string">dataGridActions</item>
-                </item>
-            </argument>
-        </component>
 
         <filters name="listing_filters">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
+
                     <item name="columnsProvider" xsi:type="string">webpos_staff_listing.webpos_staff_listing.webpos_staff_columns</item>
                     <item name="storageConfig" xsi:type="array">
                         <item name="provider" xsi:type="string">webpos_staff_listing.webpos_staff_listing.listing_top.bookmarks</item>
                         <item name="namespace" xsi:type="string">current</item>
                     </item>
+
+
                     <item name="childDefaults" xsi:type="array">
                         <item name="provider" xsi:type="string">webpos_staff_listing.webpos_staff_listing.listing_top.listing_filters</item>
                         <item name="imports" xsi:type="array">
@@ -141,22 +182,52 @@
                 </item>
             </argument>
         </filters>
-
-        <filterSearch name="fulltext">
+        <paging name="listing_paging">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
-                    <item name="provider" xsi:type="string">webpos_staff_listing.webpos_staff_listing_data_source</item>
-                    <item name="chipsProvider" xsi:type="string">webpos_staff_listing.webpos_staff_listing.listing_top.listing_filters_chips</item>
                     <item name="storageConfig" xsi:type="array">
                         <item name="provider" xsi:type="string">webpos_staff_listing.webpos_staff_listing.listing_top.bookmarks</item>
-                        <item name="namespace" xsi:type="string">current.search</item>
+                        <item name="namespace" xsi:type="string">current.paging</item>
                     </item>
+                    <item name="selectProvider" xsi:type="string">webpos_staff_listing.webpos_staff_listing.webpos_staff_columns.ids</item>
                 </item>
             </argument>
-        </filterSearch>
+        </paging>
     </container>
-
     <columns name="webpos_staff_columns">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="storageConfig" xsi:type="array">
+                    <item name="provider" xsi:type="string">webpos_staff_listing.webpos_staff_listing.listing_top.bookmarks</item>
+                    <item name="namespace" xsi:type="string">current</item>
+                </item>
+                <item name="editorConfig" xsi:type="array">
+                    <item name="selectProvider" xsi:type="string">webpos_staff_listing.webpos_staff_listing.webpos_staff_listing.ids</item>
+                    <item name="enabled" xsi:type="boolean">true</item>
+                    <item name="indexField" xsi:type="string">staff_id</item>
+                    <item name="clientConfig" xsi:type="array">
+                        <item name="saveUrl" xsi:type="url" path="webpos/staff/inlineEdit"/>
+                        <item name="validateBeforeSave" xsi:type="boolean">false</item>
+                    </item>
+                </item>
+                <item name="childDefaults" xsi:type="array">
+                    <item name="fieldAction" xsi:type="array">
+                        <item name="provider" xsi:type="string">webpos_staff_listing.webpos_staff_listing.webpos_staff_listing_editor</item>
+                        <item name="target" xsi:type="string">startEdit</item>
+                        <item name="params" xsi:type="array">
+                            <item name="0" xsi:type="string">${ $.$data.rowIndex }</item>
+                            <item name="1" xsi:type="boolean">true</item>
+                        </item>
+                    </item>
+                    <item name="storageConfig" xsi:type="array">
+                        <item name="provider" xsi:type="string">webpos_staff_listing.webpos_staff_listing.listing_top.bookmarks</item>
+                        <item name="root" xsi:type="string">columns.${ $.index }</item>
+                        <item name="namespace" xsi:type="string">current.${ $.storageConfig.root }</item>
+                    </item>
+                </item>
+
+            </item>
+        </argument>
         <selectionsColumn name="ids">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
@@ -177,6 +248,7 @@
                 </item>
             </argument>
         </column>
+
         <column name="username">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
@@ -238,5 +310,6 @@
                 </item>
             </argument>
         </actionsColumn>
+
     </columns>
 </listing>

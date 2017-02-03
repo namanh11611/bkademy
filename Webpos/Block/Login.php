@@ -1,13 +1,6 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: NamAnh
- * Date: 03-Feb-17
- * Time: 3:34 AM
- */
 
 namespace Bkademy\Webpos\Block;
-
 
 class Login extends \Bkademy\Webpos\Block\AbstractBlock
 {

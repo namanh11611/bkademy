@@ -1,22 +1,24 @@
 <?php
-
 /**
- * Created by PhpStorm.
- * User: NamAnh
- * Date: 03-Feb-17
- * Time: 12:55 AM
+ *  Copyright © 2016 Magestore. All rights reserved.
+ *  See COPYING.txt for license details.
+ *
  */
 
 namespace Bkademy\Webpos\Block\Adminhtml\Staff\Edit\Tab;
 
-
-class Form extends \Magento\Backend\Block\Widget\Form\Generic implements \Magento\Backend\Block\Widget\Tab\TabInterface
+/**
+ * Class Form
+ * @package Magestore\Webpos\Block\Adminhtml\Staff\Staff\Edit\Tab
+ */
+class Form extends \Magento\Backend\Block\Widget\Form\Generic
+    implements \Magento\Backend\Block\Widget\Tab\TabInterface
 {
+
     /**
      * @var \Magento\Framework\ObjectManagerInterface
      */
     protected $_objectManager;
-
     /**
      * @var \Magento\Store\Model\System\Store
      */
@@ -38,7 +40,8 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
         \Magento\Framework\ObjectManagerInterface $objectManager,
         \Magento\Store\Model\System\Store $systemStore,
         array $data = array()
-    ) {
+    )
+    {
         $this->_objectManager = $objectManager;
         $this->_systemStore = $systemStore;
         parent::__construct($context, $registry, $formFactory, $data);
@@ -52,8 +55,14 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
         $this->getLayout()->getBlock('page.title')->setPageTitle($this->getPageTitle());
     }
 
+
+    /**
+     * @return $this
+     * @throws \Magento\Framework\Exception\LocalizedException
+     */
     protected function _prepareForm()
     {
+
         $model = $this->_coreRegistry->registry('current_staff');
 
         $data = array();
@@ -135,29 +144,54 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
         $this->setForm($form);
         return parent::_prepareForm();
     }
+
+    /**
+     * @return mixed
+     */
     public function getStaff()
     {
         return $this->_coreRegistry->registry('current_staff');
     }
+
+
+    /**
+     * @return mixed
+     */
     public function getPageTitle()
     {
         return $this->getStaff()->getId() ? __("Edit Staff %1",
             $this->escapeHtml($this->getStaff()->getDisplayName())) : __('New Staff');
     }
+
+
+    /**
+     * @return mixed
+     */
     public function getTabLabel()
     {
         return __('Staff Information');
     }
+
+
+    /**
+     * @return mixed
+     */
     public function getTabTitle()
     {
         return __('Staff Information');
     }
 
+    /**
+     * @return bool
+     */
     public function canShowTab()
     {
         return true;
     }
 
+    /**
+     * @return bool
+     */
     public function isHidden()
     {
         return false;

@@ -1,12 +1,5 @@
 <?php
 
-/**
- * Created by PhpStorm.
- * User: NamAnh
- * Date: 03-Feb-17
- * Time: 3:33 AM
- */
-
 namespace Bkademy\Webpos\Block;
 
 class AbstractBlock extends \Magento\Framework\View\Element\Template
@@ -40,4 +33,5 @@ class AbstractBlock extends \Magento\Framework\View\Element\Template
     {
         return $this->configProvider->getConfig();
     }
+
 }

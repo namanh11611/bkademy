@@ -1,25 +1,8 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: NamAnh
- * Date: 03-Feb-17
- * Time: 12:42 AM
- */
-
 namespace Bkademy\Webpos\Controller\Adminhtml\Staff;
-
-
-use Magento\Framework\App\ResponseInterface;
 
 class Edit extends \Bkademy\Webpos\Controller\Adminhtml\Staff
 {
-
-    /**
-     * Dispatch request
-     *
-     * @return \Magento\Framework\Controller\ResultInterface|ResponseInterface
-     * @throws \Magento\Framework\Exception\NotFoundException
-     */
     public function execute()
     {
         $id = $this->getRequest()->getParam('staff_id');

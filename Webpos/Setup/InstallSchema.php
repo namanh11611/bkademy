@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: NamAnh
- * Date: 19-Jan-17
- * Time: 2:26 PM
- */
 namespace Bkademy\Webpos\Setup;
 
 use Magento\Framework\Setup\InstallSchemaInterface;
@@ -16,11 +10,11 @@ use Magento\Framework\Setup\SchemaSetupInterface;
  */
 class InstallSchema implements InstallSchemaInterface
 {
-    public function install(SchemaSetupInterface $setup, ModuleContextInterface $context) {
+    public function install(SchemaSetupInterface $setup, ModuleContextInterface $context){
         $installer = $setup;
         $installer->startSetup();
 
-        $setup->getConnection()->dropTable($setup->gettable('webpos_staff'));
+//        $setup->getConnection()->dropTable($setup->getTable('webpos_staff'));
 
         if (!$installer->getConnection()->isTableExists($installer->getTable('webpos_staff'))) {
             $table = $installer->getConnection()->newTable(
@@ -29,7 +23,7 @@ class InstallSchema implements InstallSchemaInterface
                 'staff_id',
                 \Magento\Framework\DB\Ddl\Table::TYPE_INTEGER,
                 null,
-                ['indentity' => true, 'unsigned' => true, 'nullable' => false, 'primary' => true],
+                ['identity' => true, 'unsigned' => true, 'nullable' => false, 'primary' => true],
                 'staff_id'
             )->addColumn(
                 'store_ids',

@@ -1,11 +1,8 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: NamAnh
- * Date: 02-Feb-17
- * Time: 11:52 PM
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
  */
-
 namespace Bkademy\Webpos\Ui\Component\Listing\Column;
 
 use Magento\Framework\UrlInterface;
@@ -13,6 +10,9 @@ use Magento\Framework\View\Element\UiComponent\ContextInterface;
 use Magento\Framework\View\Element\UiComponentFactory;
 use Magento\Ui\Component\Listing\Columns\Column;
 
+/**
+ * Class BlockActions
+ */
 class StaffActions extends Column
 {
     /**
@@ -27,7 +27,8 @@ class StaffActions extends Column
     protected $urlBuilder;
 
     /**
-     * StaffActions constructor.
+     * Constructor
+     *
      * @param ContextInterface $context
      * @param UiComponentFactory $uiComponentFactory
      * @param UrlInterface $urlBuilder
@@ -46,6 +47,12 @@ class StaffActions extends Column
     }
 
     /**
+     * @param array $items
+     * @return array
+     */
+    /**
+     * Prepare Data Source
+     *
      * @param array $dataSource
      * @return array
      */
@@ -85,4 +92,5 @@ class StaffActions extends Column
 
         return $dataSource;
     }
+
 }

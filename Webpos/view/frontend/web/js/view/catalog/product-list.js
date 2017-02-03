@@ -5,8 +5,9 @@ define([
     'ko',
     'Bkademy_Webpos/js/model/url-builder',
     'Magento_Catalog/js/price-utils',
-    'Bkademy_Webpos/js/model/catalog/product/detail-popup'
-], function ($, Component, storage, ko, urlBuilder, priceUtils, detailPopup) {
+    'Bkademy_Webpos/js/model/catalog/product/detail-popup',
+    'Bkademy_Webpos/js/model/checkout/cart'
+], function ($, Component, storage, ko, urlBuilder, priceUtils, detailPopup, CartModel) {
     'use strict';
 
     return Component.extend({

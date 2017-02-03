@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/WebPos.iml" filepath="$PROJECT_DIR$/.idea/WebPos.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/webpos.iml" filepath="$PROJECT_DIR$/.idea/webpos.iml" />
     </modules>
   </component>
 </project>

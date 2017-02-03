@@ -1,15 +1,14 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: NamAnh
- * Date: 01-Feb-17
- * Time: 11:32 PM
+ * Copyright © 2016 Bkademy. All rights reserved.
+ * See COPYING.txt for license details.
  */
-
 namespace Bkademy\Webpos\Controller\Index;
 
-use Magento\Framework\App\ResponseInterface;
-
+/**
+ * Class Index
+ * @package Bkademy\Webpos\Controller\Index
+ */
 class Collection extends \Magento\Framework\App\Action\Action
 {
     /**
@@ -31,27 +30,23 @@ class Collection extends \Magento\Framework\App\Action\Action
     }
 
     /**
-     * Dispatch request
-     *
-     * @return \Magento\Framework\Controller\ResultInterface|ResponseInterface
-     * @throws \Magento\Framework\Exception\NotFoundException
+     * @return \Magento\Framework\View\Result\Page
      */
     public function execute()
     {
         $productCollection = $this->_objectManager
             ->create('Magento\Catalog\Model\ResourceModel\Product\Collection')
             ->addAttributeToSelect(['name', 'price', 'image'])
-//            ->addAttributeToFilter('name', 'Fusion Backpack')
-            ->addAttributeToFilter('entity_id', array('in' => array(210, 211, 212)))
+            ->addAttributeToFilter( 'entity_id', array( 'in' => array(210,211,212) ) )
             ->setPageSize(10,1);
         $output = '';
 
         $productCollection->setDataToAll('price', 20);
         $productCollection->save();
-
         foreach ($productCollection as $product) {
             $output .= \Zend_Debug::dump($product->debug(), null, false);
         }
+//        $output = $productCollection->getSelect()->__toString();
         $this->getResponse()->setBody($output);
     }
 }

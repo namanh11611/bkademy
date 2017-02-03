@@ -1,15 +1,6 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: NamAnh
- * Date: 03-Feb-17
- * Time: 1:15 AM
- */
 
 namespace Bkademy\Webpos\Controller\Adminhtml\Staff;
-
-
-use Magento\Framework\App\ResponseInterface;
 
 class Delete extends \Bkademy\Webpos\Controller\Adminhtml\Staff
 {

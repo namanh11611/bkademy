@@ -1,29 +1,27 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: NamAnh
- * Date: 03-Feb-17
- * Time: 1:55 AM
- */
 
-namespace Bkademy\Webpos\Controller\Adminhtml\Staff;
+namespace  Bkademy\Webpos\Controller\Adminhtml\Staff;
 
 use Magento\Framework\Controller\ResultFactory;
 use Magento\Backend\App\Action;
 use Magento\Backend\App\Action\Context;
 use Magento\Ui\Component\MassAction\Filter;
 use Bkademy\Webpos\Model\ResourceModel\Staff\CollectionFactory;
-
+/**
+ * Action MassStatus
+ */
 class MassDisable extends Action
 {
     /**
      * @var Filter
      */
     protected $filter;
+
     /**
      * @var CollectionFactory
      */
     protected $collectionFactory;
+
     /**
      * @param Context $context
      * @param Filter $filter
@@ -35,6 +33,7 @@ class MassDisable extends Action
         $this->collectionFactory = $collectionFactory;
         parent::__construct($context);
     }
+
     /**
      * Execute action
      */
@@ -42,11 +41,14 @@ class MassDisable extends Action
     {
         $collection = $this->filter->getCollection($this->collectionFactory->create());
         $collectionSize = $collection->getSize();
+
         foreach ($collection as $item) {
             $item->setStatus('2');
             $item->save();
         }
+
         $this->messageManager->addSuccess(__('A total of %1 record(s) have been disabled.', $collectionSize));
+
         /** @var \Magento\Backend\Model\View\Result\Redirect $resultRedirect */
         $resultRedirect = $this->resultFactory->create(ResultFactory::TYPE_REDIRECT);
         return $resultRedirect->setPath('*/*/');

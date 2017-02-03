@@ -1,10 +1,11 @@
 <?php
 
 namespace Bkademy\Webpos\Controller\Index;
-
 /**
- * Class Index
- * @package Bkademy\Webpos\Controller\Index
+ * Created by PhpStorm.
+ * User: root
+ * Date: 12/01/2017
+ * Time: 15:48
  */
 class Index extends \Magento\Framework\App\Action\Action
 {
@@ -15,13 +16,13 @@ class Index extends \Magento\Framework\App\Action\Action
 
     /**
      * Index constructor.
-     * @param Context $context
+     * @param \Magento\Framework\App\Action\Context $context
      * @param \Magento\Framework\View\Result\PageFactory $resultPageFactory
      */
     public function __construct(
         \Magento\Framework\App\Action\Context $context,
         \Magento\Framework\View\Result\PageFactory $resultPageFactory
-    ) {
+    ){
         $this->_resultPageFactory = $resultPageFactory;
         parent::__construct($context);
     }
@@ -34,14 +35,5 @@ class Index extends \Magento\Framework\App\Action\Action
         $resultLayout = $this->_resultPageFactory->create();
         $resultLayout->getLayout()->getUpdate()->removeHandle('default');
         return $resultLayout;
-
-//        $staff = $this->_objectManager->create('Bkademy\Webpos\Model\Staff');
-//
-//        $staff->setUsername('admin');
-//        $staff->setDisplayName('Admin');
-//        $staff->setEmail('admin@bkademy.com');
-//
-//        $staff->save();
-//        $this->getResponse()->setBody('success');
     }
 }

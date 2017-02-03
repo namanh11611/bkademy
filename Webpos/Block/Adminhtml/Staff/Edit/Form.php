@@ -1,16 +1,17 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: NamAnh
- * Date: 03-Feb-17
- * Time: 12:53 AM
+ *  Copyright © 2016 Magestore. All rights reserved.
+ *  See COPYING.txt for license details.
+ *
  */
 
 namespace Bkademy\Webpos\Block\Adminhtml\Staff\Edit;
-
-
 class Form extends \Magento\Backend\Block\Widget\Form\Generic
 {
+    /**
+     * @return $this
+     * @throws \Magento\Framework\Exception\LocalizedException
+     */
     protected function _prepareForm()
     {
         $form = $this->_formFactory->create(

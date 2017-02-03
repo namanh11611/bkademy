@@ -1,26 +1,26 @@
 <?php
 
 /**
- * Created by PhpStorm.
- * User: NamAnh
- * Date: 03-Feb-17
- * Time: 5:18 AM
+ *  Copyright © 2016 Magestore. All rights reserved.
+ *  See COPYING.txt for license details.
+ *
  */
-
 namespace Bkademy\Webpos\Api\Staff;
 
 interface StaffRepositoryInterface
 {
+
     /**
-     * @param $username
-     * @param $password
-     * @return mixed
+     * @param string $username
+     * @param string $password
+     * @return int|boolean
      */
     public function login($username, $password);
-
+    
     /**
-     * @return mixed
+     *
+     * @return boolean
      */
     public function logout();
-
+    
 }
