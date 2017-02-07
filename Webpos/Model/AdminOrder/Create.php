@@ -12,6 +12,7 @@ class Create extends \Magento\Sales\Model\AdminOrder\Create
     protected $_quote_id = 0;
 
     /**
+     * Create a new quote
      * @return \Magento\Quote\Api\Data\CartInterface
      */
     public function createQuote(){
@@ -26,6 +27,7 @@ class Create extends \Magento\Sales\Model\AdminOrder\Create
     }
 
     /**
+     * Start an API action
      * @param string $quoteId
      * @return $this
      */
@@ -34,7 +36,7 @@ class Create extends \Magento\Sales\Model\AdminOrder\Create
         if($quoteId){
             $this->_quote_id = $quoteId;
             $quote = $this->quoteRepository->get($quoteId, [$session->getStore()->getId()]);
-        }else {
+        } else {
             $quote = $this->createQuote();
         }
         $this->setQuote($quote);
@@ -43,6 +45,7 @@ class Create extends \Magento\Sales\Model\AdminOrder\Create
     }
 
     /**
+     * Finish action - save quote
      * @param bool $saveQuote
      * @return $this
      */
@@ -54,6 +57,7 @@ class Create extends \Magento\Sales\Model\AdminOrder\Create
     }
 
     /**
+     * Save quote and collect rates
      * @return $this
      */
     public function saveQuote()
@@ -65,6 +69,7 @@ class Create extends \Magento\Sales\Model\AdminOrder\Create
     }
 
     /**
+     * Get current quote
      * @return $this
      */
     public function getQuote()
@@ -72,7 +77,7 @@ class Create extends \Magento\Sales\Model\AdminOrder\Create
         $quoteId = $this->_quote_id;
         if(!$quoteId){
             $quote = $this->createQuote();
-        }else{
+        } else {
             $session = $this->getSession();
             $quote = $this->quoteRepository->get($quoteId, [$session->getStore()->getId()]);
         }
@@ -81,6 +86,7 @@ class Create extends \Magento\Sales\Model\AdminOrder\Create
     }
 
     /**
+     * Set quote
      * @param \Magento\Quote\Model\Quote $quote
      */
     public function setQuote(\Magento\Quote\Model\Quote $quote){
@@ -146,6 +152,7 @@ class Create extends \Magento\Sales\Model\AdminOrder\Create
     }
 
     /**
+     * Add data to quote
      * @param $quoteData
      * @return $this
      */
@@ -159,6 +166,7 @@ class Create extends \Magento\Sales\Model\AdminOrder\Create
     }
 
     /**
+     * Assign customer to quote
      * @param \Magento\Customer\Api\Data\CustomerInterface $customer
      * @return $this
      */
@@ -167,7 +175,7 @@ class Create extends \Magento\Sales\Model\AdminOrder\Create
             $this->getQuote()->setCustomerIsGuest(false);
             $this->getQuote()->assignCustomer($customer);
             $this->getSession()->setCustomerId($customer->getId());
-        }else{
+        } else {
             $this->getQuote()->setCustomerIsGuest(true);
         }
         return $this;

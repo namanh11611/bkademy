@@ -25,7 +25,7 @@ class Permission extends Data
     }
     
     public function isLogin(){
-        return true;
+//        return true;
         if($this->session->getWebposId())
             return true;
         return false;

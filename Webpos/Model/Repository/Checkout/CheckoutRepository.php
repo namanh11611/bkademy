@@ -23,16 +23,6 @@ class CheckoutRepository implements \Bkademy\Webpos\Api\Checkout\CheckoutReposit
     protected $_orderCreateModel;
 
     /**
-     * @var \Magento\Catalog\Helper\Image
-     */
-    protected $_catalogHelperImage;
-
-    /**
-     * @var \Magento\Framework\App\Config\ScopeConfigInterface
-     */
-    protected $_scopeConfig;
-
-    /**
      * @var \Magento\Customer\Api\CustomerRepositoryInterface
      */
     protected $_customerRepository;
@@ -52,8 +42,6 @@ class CheckoutRepository implements \Bkademy\Webpos\Api\Checkout\CheckoutReposit
      * @param ResponseInterface $responseModelData
      * @param QuoteDataInterface $quoteModelData
      * @param \Bkademy\Webpos\Model\AdminOrder\Create $orderCreateModel
-     * @param \Magento\Catalog\Helper\Image $catalogHelperImage
-     * @param \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig
      * @param \Magento\Customer\Api\CustomerRepositoryInterface $customerRepository
      * @param \Magento\Payment\Model\MethodList $paymentMethodList
      * @param \Magento\Sales\Api\OrderRepositoryInterface $orderRepository
@@ -62,8 +50,6 @@ class CheckoutRepository implements \Bkademy\Webpos\Api\Checkout\CheckoutReposit
         \Bkademy\Webpos\Api\Data\Checkout\ResponseInterface $responseModelData,
         \Bkademy\Webpos\Api\Data\Checkout\QuoteDataInterface $quoteModelData,
         \Bkademy\Webpos\Model\AdminOrder\Create $orderCreateModel,
-        \Magento\Catalog\Helper\Image $catalogHelperImage,
-        \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig,
         \Magento\Customer\Api\CustomerRepositoryInterface $customerRepository,
         \Magento\Payment\Model\MethodList $paymentMethodList,
         \Magento\Sales\Api\OrderRepositoryInterface $orderRepository
@@ -71,14 +57,13 @@ class CheckoutRepository implements \Bkademy\Webpos\Api\Checkout\CheckoutReposit
         $this->_responseModelData = $responseModelData;
         $this->_quoteModelData = $quoteModelData;
         $this->_orderCreateModel = $orderCreateModel;
-        $this->_catalogHelperImage = $catalogHelperImage;
-        $this->_scopeConfig = $scopeConfig;
         $this->_customerRepository = $customerRepository;
         $this->_paymentMethodList = $paymentMethodList;
         $this->_orderRepository = $orderRepository;
     }
 
     /**
+     * Save cart when click checkout button
      * @param int|null $quoteId
      * @param \Bkademy\Webpos\Api\Data\Checkout\ItemBuyRequestInterface[] $items
      * @param string $customerId
@@ -95,6 +80,7 @@ class CheckoutRepository implements \Bkademy\Webpos\Api\Checkout\CheckoutReposit
     }
 
     /**
+     * Remove cart when click clear cart button
      * @param string $quoteId
      * @return \Bkademy\Webpos\Api\Data\Checkout\QuoteDataInterface
      */
@@ -106,6 +92,7 @@ class CheckoutRepository implements \Bkademy\Webpos\Api\Checkout\CheckoutReposit
     }
 
     /**
+     * Remove quote item
      * @param string $quoteId
      * @param string $itemId
      * @return $this
@@ -118,6 +105,7 @@ class CheckoutRepository implements \Bkademy\Webpos\Api\Checkout\CheckoutReposit
     }
 
     /**
+     * Save shipping method
      * @param string $quoteId
      * @param string $shippingMethod
      * @return $this
@@ -130,6 +118,7 @@ class CheckoutRepository implements \Bkademy\Webpos\Api\Checkout\CheckoutReposit
     }
 
     /**
+     * Save payment method
      * @param string $quoteId
      * @param string $paymentMethod
      * @return $this
@@ -142,6 +131,7 @@ class CheckoutRepository implements \Bkademy\Webpos\Api\Checkout\CheckoutReposit
     }
 
     /**
+     * Save data to quote
      * @param string $quoteId
      * @param string $quoteData
      * @return $this
@@ -153,6 +143,7 @@ class CheckoutRepository implements \Bkademy\Webpos\Api\Checkout\CheckoutReposit
     }
 
     /**
+     * Assign customer to quote
      * @param string $quoteId
      * @param string $customerId
      * @return $this
@@ -166,6 +157,7 @@ class CheckoutRepository implements \Bkademy\Webpos\Api\Checkout\CheckoutReposit
     }
 
     /**
+     * Place order
      * @param string $quoteId
      * @return \Magento\Sales\Api\Data\OrderInterface
      */
@@ -179,6 +171,7 @@ class CheckoutRepository implements \Bkademy\Webpos\Api\Checkout\CheckoutReposit
     }
 
     /**
+     * Get response for API request
      * @param int $status
      * @param array $messages
      * @param array $sections
@@ -193,8 +186,9 @@ class CheckoutRepository implements \Bkademy\Webpos\Api\Checkout\CheckoutReposit
         );
         return $this->_responseModelData->setData($data);
     }
-    
+
     /**
+     * Get quote data to send to client
      * @param $sections
      * @param $model
      * @return array
@@ -228,6 +222,7 @@ class CheckoutRepository implements \Bkademy\Webpos\Api\Checkout\CheckoutReposit
     }
 
     /**
+     * Get quote itens data
      * @return array
      */
     protected function _getQuoteItems(){
@@ -243,6 +238,7 @@ class CheckoutRepository implements \Bkademy\Webpos\Api\Checkout\CheckoutReposit
     }
 
     /**
+     * Get all quote totals data
      * @return array
      */
     protected function _getTotals(){
@@ -255,6 +251,7 @@ class CheckoutRepository implements \Bkademy\Webpos\Api\Checkout\CheckoutReposit
     }
 
     /**
+     * Get shipping list
      * @return array
      */
     protected function _getShipping(){
@@ -282,7 +279,8 @@ class CheckoutRepository implements \Bkademy\Webpos\Api\Checkout\CheckoutReposit
     }
 
     /**
-     * @return mixed
+     * Get payment list
+     * @return array
      */
     protected function _getPayment(){
         $paymentList = array();
@@ -295,16 +293,5 @@ class CheckoutRepository implements \Bkademy\Webpos\Api\Checkout\CheckoutReposit
             );
         };
         return $paymentList;
-    }
-
-    /**
-     * @param $path
-     * @return mixed
-     */
-    protected function _getStoreConfig($path){
-        return $this->_scopeConfig->getValue(
-            $path,
-            \Magento\Store\Model\ScopeInterface::SCOPE_STORE
-        );
     }
 }
