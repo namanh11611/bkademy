@@ -9,8 +9,12 @@
   <acl>
       <resources>
           <resource id="Magento_Backend::admin">
-              <resource id="Bkademy_Webpos::webpos" title="Webpos" sortOrder="10">
-                  <resource id="Bkademy_Webpos::settings" title="Settings" sortOrder="20" />
+              <resource id="Bkademy_Webpos::main_menu" title="Bkademy" sortOrder="10">
+                  <resource id="Bkademy_Webpos::webpos" title="Webpos" sortOrder="10">
+                      <resource id="Bkademy_Webpos::checkout" title="Checkout" sortOrder="20"/>
+                      <resource id="Bkademy_Webpos::staff" title="Staff Management" sortOrder="30"/>
+                      <resource id="Bkademy_Webpos::settings" title="Settings" sortOrder="40"/>
+                  </resource>
               </resource>
               <resource id="Magento_Backend::stores">
                   <resource id="Magento_Backend::stores_settings">
